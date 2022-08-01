@@ -11,46 +11,44 @@ const ConverterLeft = (props) => {
     return fullCountry[0].name;
   };
   return (
-    <div>
-      <div className="converter-left">
-        <div className="top-left">
-          <small>You Have</small>
-          {/* Dynamically pass in the country name here */}
-          <small className="country">
-            {getCountryName(props.currency[0] + props.currency[1])}
-          </small>
-        </div>
-        <div className="body-left">
-          <div className="input-group">
-            <input
-              type="number"
-              value={props.amount}
-              onChange={(e) => props.onAmountChange(e.target.value)}
-            />
+    <>
+      <div className="top-left">
+        <small>You Have</small>
+        {/* Dynamically pass in the country name here */}
+        <small className="country">
+          {getCountryName(props.currency[0] + props.currency[1])}
+        </small>
+      </div>
+      <div className="body-left">
+        <div className="input-group">
+          <input
+            type="number"
+            value={props.amount}
+            onChange={(e) => props.onAmountChange(e.target.value)}
+          />
 
-            <select
-              id="country"
-              value={props.currency}
-              onChange={(e) => props.onCurrencyChange(e.target.value)}
-            >
-              {props.currencies.map((currency) => (
-                <option key={currency} value={currency}>
-                  {currency}
-                </option>
-              ))}
-            </select>
-            {/* Pass a prop here code={country-code} to change flag dynamically */}
-            <FlagIcon
-              className="flag"
-              code={props.currency[0] + props.currency[1]}
-              width={18}
-              height={15}
-            />
-          </div>
+          <select
+            id="country"
+            value={props.currency}
+            onChange={(e) => props.onCurrencyChange(e.target.value)}
+          >
+            {props.currencies.map((currency) => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
+          </select>
+          {/* Pass a prop here code={country-code} to change flag dynamically */}
+          <FlagIcon
+            className="flag"
+            code={props.currency[0] + props.currency[1]}
+            width={18}
+            height={15}
+          />
         </div>
       </div>
-      
-    </div>
+    </>
+
   );
 };
 
